@@ -1,7 +1,8 @@
 package com.projetointegrador.backend.resources;
 
+import java.time.LocalDate;
+
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,7 @@ public class UserResource {
 	@GetMapping
 	public ResponseEntity<List<User>> findAll(){
 		List<User> list = new ArrayList<>();
-		list.add(new User(1L, "Andre Luiz Pereira Coimbra", new Date(22/07/1994), "Sao Paulo", "SP", new Date(1994), "andre_coimbra1994@hotmail.com", "123456"));
+		list.add(new User(1L, "Andre Luiz Pereira Coimbra", LocalDate.parse("1994-07-22"), "Sao Paulo", "SP", LocalDate.parse("2023-05-10"), "andre_coimbra1994@hotmail.com", "123456"));
 		return ResponseEntity.ok().body(list);
 	}
 }

@@ -1,7 +1,7 @@
 package com.projetointegrador.backend.entities;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -26,10 +26,10 @@ public class User implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
-	private Date dataNascimento;
+	private LocalDate dataNascimento;
 	private String cidade;
 	private String uf;
-	private Date anoFormacao;
+	private LocalDate anoFormacao;
 	private String email;
 	private String senha;
 	
@@ -44,8 +44,11 @@ public class User implements Serializable {
 	
 	
 
-	public User(Long id, String name, Date dataNascimento, String cidade, String uf, Date anoFormacao, String email,
-			String senha) {
+
+
+	public User(Long id, String name, LocalDate dataNascimento, String cidade, String uf, LocalDate anoFormacao,
+			String email, String senha) {
+		
 		this.id = id;
 		this.name = name;
 		this.dataNascimento = dataNascimento;
@@ -55,6 +58,10 @@ public class User implements Serializable {
 		this.email = email;
 		this.senha = senha;
 	}
+
+
+
+
 
 	public Long getId() {
 		return id;
@@ -72,11 +79,11 @@ public class User implements Serializable {
 		this.name = name;
 	}
 
-	public Date getDataNascimento() {
+	public LocalDate getDataNascimento() {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(Date dataNascimento) {
+	public void setDataNascimento(LocalDate dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 
@@ -96,11 +103,11 @@ public class User implements Serializable {
 		this.uf = uf;
 	}
 
-	public Date getAnoFormacao() {
+	public LocalDate getAnoFormacao() {
 		return anoFormacao;
 	}
 
-	public void setAnoFormacao(Date anoFormacao) {
+	public void setAnoFormacao(LocalDate anoFormacao) {
 		this.anoFormacao = anoFormacao;
 	}
 
