@@ -31,5 +31,19 @@ public class UserService {
 		User entity = obj.orElseThrow(() -> new EntityNotFoundException("usuario nao localizado"));
 		return new UserDTO(entity) ;
 	}
+	
+	@Transactional
+	public UserDTO insert(UserDTO dto) {
+		User entity = new User();
+		entity.setName(dto.getName());
+		entity.setDataNascimento(dto.getDataNascimento());
+		entity.setAnoFormacao(dto.getAnoFormacao());
+		entity.setCidade(dto.getCidade());
+		entity.setUf(dto.getUf());
+		entity.setEmail(dto.getEmail());
+		entity.setSenha(dto.getSenha());
+		entity = repository.save(entity);
+		return new UserDTO(entity);
+	}
 
 }
