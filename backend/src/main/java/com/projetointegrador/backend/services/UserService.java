@@ -1,11 +1,11 @@
 package com.projetointegrador.backend.services;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,9 +23,9 @@ public class UserService {
 	private UserRepository repository;
 	
 	@Transactional(readOnly = true)
-	public List<UserDTO> findAll(){
-		List<User> list = repository.findAll();
-		return list.stream().map(x -> new UserDTO(x)).collect(Collectors.toList());
+	public Page<Object> findAllPaged(PageRequest buscaPaginada){
+		Page<User> list = repository.findAll(buscaPaginada);
+		return list.map(x -> new UserDTO(x));
 	}
 	
 	@Transactional(readOnly = true)
@@ -78,5 +78,7 @@ public class UserService {
 		}
 		
 	}
+	
+	
 
 }
