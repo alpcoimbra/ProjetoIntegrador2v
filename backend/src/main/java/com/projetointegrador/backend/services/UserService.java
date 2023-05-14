@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -65,6 +66,17 @@ public class UserService {
 		catch (EntityNotFoundException e) {
 			throw new ResourceNotFoundException("Usuario" + dto.getName() + "nao encontrado");
 		}
+	}
+	
+	// nao apresenta mensagem de usuario inexistente quando ja ouve uma exclusao do mesmo ID anteriormente
+	public void delete(Long id) {
+		try {
+			repository.deleteById(id);
+		}
+		catch(EmptyResultDataAccessException e) {
+			e.getMessage();
+		}
+		
 	}
 
 }

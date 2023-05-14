@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,9 +23,13 @@ public class User implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
+	
+	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private LocalDate dataNascimento;
 	private String cidade;
 	private String uf;
+	
+	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private LocalDate anoFormacao;
 	private String email;
 	private String senha;
