@@ -2,6 +2,7 @@ package com.projetointegrador.backend.services;
 
 import java.util.Optional;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
@@ -38,13 +39,17 @@ public class UserService {
 	@Transactional
 	public UserDTO insert(UserDTO dto) {
 		User entity = new User();
-		entity.setName(dto.getName());
-		entity.setDataNascimento(dto.getDataNascimento());
-		entity.setAnoFormacao(dto.getAnoFormacao());
-		entity.setCidade(dto.getCidade());
-		entity.setUf(dto.getUf());
+		entity.setFirstName(dto.getFirstName());
+		entity.setLastName(dto.getLastName());
 		entity.setEmail(dto.getEmail());
 		entity.setSenha(dto.getSenha());
+		entity.setImg(dto.getImg());
+		entity.setSex(dto.getSex());
+		entity.setBirthdate(dto.getBirthdate());
+		entity.setCity(dto.getCity());
+		entity.setState(dto.getState());
+		entity.setAbout(dto.getAbout());
+		entity.setRating(dto.getRating());
 		entity = repository.save(entity);
 		return new UserDTO(entity);
 	}
@@ -53,18 +58,22 @@ public class UserService {
 	public UserDTO update(Long Id, UserDTO dto) {
 		try {
 		User entity = repository.getReferenceById(Id);
-		entity.setName(dto.getName());
-		entity.setDataNascimento(dto.getDataNascimento());
-		entity.setAnoFormacao(dto.getAnoFormacao());
-		entity.setCidade(dto.getCidade());
-		entity.setUf(dto.getUf());
+		entity.setFirstName(dto.getFirstName());
+		entity.setLastName(dto.getLastName());
 		entity.setEmail(dto.getEmail());
 		entity.setSenha(dto.getSenha());
+		entity.setImg(dto.getImg());
+		entity.setSex(dto.getSex());
+		entity.setBirthdate(dto.getBirthdate());
+		entity.setCity(dto.getCity());
+		entity.setState(dto.getState());
+		entity.setAbout(dto.getAbout());
+		entity.setRating(dto.getRating());
 		entity = repository.save(entity);
 		return new UserDTO(entity);
 		}
 		catch (EntityNotFoundException e) {
-			throw new ResourceNotFoundException("Usuario" + dto.getName() + "nao encontrado");
+			throw new ResourceNotFoundException("Usuario" + dto.getFirstName() + "nao encontrado");
 		}
 	}
 	

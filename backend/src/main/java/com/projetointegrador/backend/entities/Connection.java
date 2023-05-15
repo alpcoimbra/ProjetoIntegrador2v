@@ -1,25 +1,19 @@
 package com.projetointegrador.backend.entities;
 
 import java.io.Serializable;
-
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-
-import jakarta.persistence.Entity;
+import javax.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import javax.persistence.Id;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-
+import jakarta.persistence.ManyToMany;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@Table (name = "tb_user")
-public class User implements Serializable {
-	
+public class Connection implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -38,13 +32,18 @@ public class User implements Serializable {
 	private String state;
 	private String about;
 	
+	@ManyToMany(mappedBy = "users")
+	Set<User> users = new HashSet<>();
 	private Integer rating;
 	
-	public User() {
+	Set<Testimonial> testimonials = new HashSet<>();
+	
+	public Connection() {
 		
 	}
+	
 
-	public User(Long id, String firstName, String lastName, String email, String senha, String img, String sex,
+	public Connection(Long id, String firstName, String lastName, String email, String senha, String img, String sex,
 			LocalDate birthdate, String city, String state, String about, Integer rating) {
 		this.id = id;
 		this.firstName = firstName;
@@ -59,7 +58,6 @@ public class User implements Serializable {
 		this.about = about;
 		this.rating = rating;
 	}
-
 
 
 	public Long getId() {
@@ -194,6 +192,18 @@ public class User implements Serializable {
 
 
 
+	public Set<Connection> getUsers() {
+		return users;
+	}
+
+
+
+	public void setUsers(Set<Connection> users) {
+		this.users = users;
+	}
+
+
+
 	public Integer getRating() {
 		return rating;
 	}
@@ -203,8 +213,21 @@ public class User implements Serializable {
 	public void setRating(Integer rating) {
 		this.rating = rating;
 	}
-	
-	
+
+
+
+	public Set<Testimonial> getTestimonials() {
+		return testimonials;
+	}
+
+
+
+	public void setTestimonials(Set<Testimonial> testimonials) {
+		this.testimonials = testimonials;
+	}
+
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -223,11 +246,12 @@ public class User implements Serializable {
 			return false;
 		User other = (User) obj;
 		if (id == null) {
-			if(other.id != null)
+			if(other.getId() != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} else if (!id.equals(other.getId()))
 			return false;
 		return true;
 	}
 	
+
 }
