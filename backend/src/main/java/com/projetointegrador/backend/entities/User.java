@@ -3,6 +3,8 @@ package com.projetointegrador.backend.entities;
 import java.io.Serializable;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Inheritance;
@@ -12,6 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 
@@ -36,9 +39,14 @@ public class User implements Serializable {
 	private LocalDate birthdate;
 	private String city;
 	private String state;
+	
+	@Column(columnDefinition = "TEXT")
 	private String about;
 	
 	private Integer rating;
+	
+	@ManyToMany(mappedBy = "users")
+	private Set<Connections> connections = new HashSet<>();
 	
 	public User() {
 		
@@ -204,7 +212,11 @@ public class User implements Serializable {
 		this.rating = rating;
 	}
 	
-	
+
+	public Set<Connections> getConnections() {
+		return connections;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
