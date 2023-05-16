@@ -3,7 +3,9 @@ package com.projetointegrador.backend.entities;
 import java.io.Serializable;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -46,7 +48,10 @@ public class User implements Serializable {
 	private Integer rating;
 	
 	@ManyToMany(mappedBy = "users")
-	private Set<Connections> connections = new HashSet<>();
+	private List<Connections> connections = new ArrayList<>();
+	
+	@ManyToMany(mappedBy = "users")
+	private Set<Testimonials> testimonials = new HashSet<>();
 	
 	public User() {
 		
@@ -213,8 +218,14 @@ public class User implements Serializable {
 	}
 	
 
-	public Set<Connections> getConnections() {
+	public List<Connections> getConnections() {
 		return connections;
+	}
+	
+	
+
+	public Set<Testimonials> getTestimonials() {
+		return testimonials;
 	}
 
 	@Override

@@ -13,6 +13,13 @@ INSERT INTO tb_connections (email) VALUES ('marcos@hotmail.com');
 INSERT INTO tb_connections (email) VALUES ('fernando@hotmail.com');
 INSERT INTO tb_connections (email) VALUES ('brunotorrentini@hotmail.com');
 
+INSERT INTO tb_testimonials (name, text, rating, img) VALUES ('Viviane Silva', 'Conheci a Ana aqui no GoOut, Desde então nos tornamos amigas e já fizemos várias viagens juntas. Ela é uma ótima companhia para qualquer aventura!', 5, '../src/assets/viviane.png')
+INSERT INTO tb_testimonials (name, text, rating, img) VALUES ('Ana Muller', 'Tive o prazer de acampar com a Natane no litoral de São Paulo, ela é muito organizada e cuidadosa com todos os detalhes. Foi uma experiência incrível!', 5, '../src/assets/ana.png')
+INSERT INTO tb_testimonials (name, text, rating, img) VALUES ('Bruna Fernandes', 'Conheci a Viviane em uma trilha na Serra da Cantareira, ela foi muito prestativa e simpática, além de ser uma ótima companhia para a aventura.', 5, '../src/assets/viviane.png')
+INSERT INTO tb_testimonials (name, text, rating, img) VALUES ('Gean Lima', 'Conheci a Vanessa em uma trilha na Serra da Cantareira, ela foi muito prestativa e simpática, além de ser uma ótima companhia para a aventura.', 5, '../src/assets/bruno.png')
+INSERT INTO tb_testimonials (name, text, rating, img) VALUES ('Mariana Silva', 'Amo o GoOut! Aqui é a melhor rede social para encontrar pessoas e lugares!', 5, 'https://i.imgur.com/Jq0Ean6.jpeg')
+
+
 
 ALTER TABLE tb_user ALTER COLUMN ABOUT TYPE VARCHAR2(700)
 INSERT INTO tb_user(FIRST_NAME, LAST_NAME, EMAIL, SENHA, IMG, SEX, BIRTHDATE, CITY, STATE, ABOUT, RATING) VALUES ('Viviane', 'Oliveira', 'viviane@usuario1.com.br', 'senha123', '../src/assets/viviane.png', 'f', '1991-01-01', 'São Paulo', 'SP', 	'Sou advogada, mas amo tecnologia, e estou sempre disposta a conhecer pessoas novas e lugares legais. Valorizo a diversidade e gosto de lugares onde a inclusao é colocada em pratica.', 5);
@@ -89,3 +96,11 @@ INSERT INTO tb_user_connections (user_id, connections_id) VALUES (13, 9);
 INSERT INTO tb_user_connections (user_id, connections_id) VALUES (14, 3);
 INSERT INTO tb_user_connections (user_id, connections_id) VALUES (14, 5);
 INSERT INTO tb_user_connections (user_id, connections_id) VALUES (14, 9);
+
+
+INSERT INTO tb_user_testimonials (user_id, testimonials_id) VALUES (1, 2);
+INSERT INTO tb_user_testimonials (user_id, testimonials_id) VALUES (1, 3);
+INSERT INTO tb_user_testimonials (user_id, testimonials_id) VALUES (2, 3);
+INSERT INTO tb_user_testimonials (user_id, testimonials_id) VALUES (2, 5);
+INSERT INTO tb_user_testimonials (user_id, testimonials_id) VALUES (4, 4);
+INSERT INTO tb_user_testimonials (user_id, testimonials_id) VALUES (4, 5);

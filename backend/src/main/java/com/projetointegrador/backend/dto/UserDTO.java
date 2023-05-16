@@ -3,7 +3,14 @@ package com.projetointegrador.backend.dto;
 import java.io.Serializable;
 
 
+
+import com.projetointegrador.backend.entities.Connections;
+import com.projetointegrador.backend.entities.Testimonials;
+
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 import com.projetointegrador.backend.entities.User;
 
@@ -24,6 +31,10 @@ public class UserDTO implements Serializable {
 	private String state;
 	private String about;
 	private Integer rating;
+	
+	private List<ConnectionsDTO> connections = new ArrayList<>();
+	
+	private List<TestimonialsDTO> testimonials = new ArrayList<>();
 	
 	public UserDTO() {}
 
@@ -58,6 +69,16 @@ public class UserDTO implements Serializable {
 		this.state = entity.getState();
 		this.about = entity.getAbout();
 		this.rating = entity.getRating();
+	}
+	
+	public UserDTO(User entity, List<Connections> connections) {
+		this(entity);
+		connections.forEach(u -> this.connections.add(new ConnectionsDTO(u)));
+	}
+	
+	public UserDTO(Set<Testimonials> testimonials, User entity) {
+		this(entity);
+		testimonials.forEach(t -> this.testimonials.add(new TestimonialsDTO(t)));
 	}
 
 
@@ -157,6 +178,20 @@ public class UserDTO implements Serializable {
 	public void setRating(Integer rating) {
 		this.rating = rating;
 	}
+
+
+
+	public List<ConnectionsDTO> getConnections() {
+		return connections;
+	}
+
+
+
+	public void setConnections(List<ConnectionsDTO> connections) {
+		this.connections = connections;
+	}
+	
+
 	
 
 }

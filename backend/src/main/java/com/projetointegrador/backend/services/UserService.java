@@ -3,6 +3,7 @@ package com.projetointegrador.backend.services;
 import java.util.Optional;
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
@@ -33,7 +34,14 @@ public class UserService {
 	public UserDTO findById(Long id) {
 		Optional<User> obj = repository.findById(id);
 		User entity = obj.orElseThrow(() -> new ResourceNotFoundException("usuario nao localizado"));
-		return new UserDTO(entity) ;
+		return new UserDTO(entity, entity.getConnections()) ;
+	}
+	
+	@Transactional(readOnly = true)
+	public UserDTO findByName(Long id) {
+		Optional<User> obj = repository.findById(id);
+		User entity = obj.orElseThrow(() -> new ResourceNotFoundException("usuario nao localizado"));
+		return new UserDTO(entity.getTestimonials(), entity) ;
 	}
 	
 	@Transactional
@@ -77,7 +85,6 @@ public class UserService {
 		}
 	}
 	
-	// nao apresenta mensagem de usuario inexistente quando ja ouve uma exclusao do mesmo ID anteriormente
 	public void delete(Long id) {
 		try {
 			repository.deleteById(id);
