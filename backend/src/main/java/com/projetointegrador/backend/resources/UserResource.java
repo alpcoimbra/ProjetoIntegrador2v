@@ -29,14 +29,14 @@ public class UserResource {
 	private UserService service;
 	
 	@GetMapping
-	public ResponseEntity<Page<Object>> findAll(@RequestParam(value = "page", defaultValue = "0") Integer page,
+	public ResponseEntity<Page<UserDTO>> findAll(@RequestParam(value = "page", defaultValue = "0") Integer page,
 			@RequestParam(value = "linesPerPage", defaultValue = "12") Integer linesPerPage,
 			@RequestParam(value = "direction", defaultValue = "ASC") String direction,
 			@RequestParam(value = "orderBy", defaultValue = "firstName") String orderBy){
 		
 		PageRequest buscaPaginada = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		
-		Page<Object> list = service.findAllPaged(buscaPaginada);
+		Page<UserDTO> list = service.findAllPaged(buscaPaginada);
 		return ResponseEntity.ok().body(list);
 	}
 	

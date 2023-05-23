@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 
 
+
 import com.projetointegrador.backend.entities.Connections;
 import com.projetointegrador.backend.entities.Testimonials;
 
@@ -71,14 +72,10 @@ public class UserDTO implements Serializable {
 		this.rating = entity.getRating();
 	}
 	
-	public UserDTO(User entity, List<Connections> connections) {
+	public UserDTO(User entity, Set<Connections> connections, Set<Testimonials> testimonials) {
 		this(entity);
 		connections.forEach(u -> this.connections.add(new ConnectionsDTO(u)));
-	}
-	
-	public UserDTO(Set<Testimonials> testimonials, User entity) {
-		this(entity);
-		testimonials.forEach(t -> this.testimonials.add(new TestimonialsDTO(t)));
+		testimonials.forEach(u -> this.testimonials.add(new TestimonialsDTO(u)));
 	}
 
 
@@ -190,8 +187,6 @@ public class UserDTO implements Serializable {
 	public void setConnections(List<ConnectionsDTO> connections) {
 		this.connections = connections;
 	}
-	
-
 	
 
 }

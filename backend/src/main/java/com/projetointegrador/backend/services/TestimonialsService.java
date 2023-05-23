@@ -3,6 +3,7 @@ package com.projetointegrador.backend.services;
 import java.util.Optional;
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
@@ -24,7 +25,7 @@ public class TestimonialsService {
 	private TestimonialsRepository repository;
 	
 	@Transactional(readOnly = true)
-	public Page<Object> findAllPaged(PageRequest buscaPaginada){
+	public Page<TestimonialsDTO> findAllPaged(PageRequest buscaPaginada){
 		Page<Testimonials> list = repository.findAll(buscaPaginada);
 		return list.map(x -> new TestimonialsDTO(x));
 	}
@@ -39,8 +40,10 @@ public class TestimonialsService {
 	@Transactional
 	public TestimonialsDTO insert(TestimonialsDTO dto) {
 		Testimonials entity = new Testimonials();
+		entity.setid(dto.getId());
 		entity.setName(dto.getName());
 		entity.setText(dto.getText());
+		entity.setRating(dto.getRating());
 		entity.setImg(dto.getImg());
 		entity = repository.save(entity);
 		return new TestimonialsDTO(entity);
@@ -52,6 +55,7 @@ public class TestimonialsService {
 		Testimonials entity = repository.getReferenceById(Id);
 		entity.setName(dto.getName());
 		entity.setText(dto.getText());
+		entity.setRating(dto.getRating());
 		entity.setImg(dto.getImg());
 		entity = repository.save(entity);
 		return new TestimonialsDTO(entity);

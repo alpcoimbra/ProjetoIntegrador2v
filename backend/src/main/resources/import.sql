@@ -1,17 +1,18 @@
-INSERT INTO tb_connections (email) VALUES ('viviane@usuario1.com.br');
-INSERT INTO tb_connections (email) VALUES ('ana@usuario2.com.br');
-INSERT INTO tb_connections (email) VALUES ('bruna.fernandes@yahoo.com.br');
-INSERT INTO tb_connections (email) VALUES ('gustavo.souza@hotmail.com');
-INSERT INTO tb_connections (email) VALUES ('marina.silva@gmail.com');
-INSERT INTO tb_connections (email) VALUES ('rafael.oliveira@yahoo.com.br');
-INSERT INTO tb_connections (email) VALUES ('isabella.pereira@hotmail.com');
-INSERT INTO tb_connections (email) VALUES ('gabriela.souza@gmail.com');
-INSERT INTO tb_connections (email) VALUES ('fernanda.rodrigues@yahoo.com.br');
-INSERT INTO tb_connections (email) VALUES ('equipe@hotmail.com');
-INSERT INTO tb_connections (email) VALUES ('gustavo@hotmail.com');
-INSERT INTO tb_connections (email) VALUES ('marcos@hotmail.com');
-INSERT INTO tb_connections (email) VALUES ('fernando@hotmail.com');
-INSERT INTO tb_connections (email) VALUES ('brunotorrentini@hotmail.com');
+INSERT INTO tb_connections (id, email) VALUES (1L,'viviane@usuario1.com.br');
+INSERT INTO tb_connections (id, email) VALUES (2L,'ana@usuario2.com.br');
+INSERT INTO tb_connections (id, email) VALUES (3L,'bruna.fernandes@yahoo.com.br');
+INSERT INTO tb_connections (id, email) VALUES (4L,'gustavo.souza@hotmail.com');
+INSERT INTO tb_connections (id, email) VALUES (5L,'marina.silva@gmail.com');
+INSERT INTO tb_connections (id, email) VALUES (6L,'rafael.oliveira@yahoo.com.br');
+INSERT INTO tb_connections (id, email) VALUES (7L,'isabella.pereira@hotmail.com');
+INSERT INTO tb_connections (id, email) VALUES (8L,'gabriela.souza@gmail.com');
+INSERT INTO tb_connections (id, email) VALUES (9L,'fernanda.rodrigues@yahoo.com.br');
+INSERT INTO tb_connections (id, email) VALUES (10L,'equipe@hotmail.com');
+INSERT INTO tb_connections (id, email) VALUES (11L,'gustavo@hotmail.com');
+INSERT INTO tb_connections (id, email) VALUES (12L,'marcos@hotmail.com');
+INSERT INTO tb_connections (id, email) VALUES (13L,'fernando@hotmail.com');
+INSERT INTO tb_connections (id, email) VALUES (14L,'brunotorrentini@hotmail.com');
+
 
 INSERT INTO tb_testimonials (name, text, rating, img) VALUES ('Viviane Silva', 'Conheci a Ana aqui no GoOut, Desde então nos tornamos amigas e já fizemos várias viagens juntas. Ela é uma ótima companhia para qualquer aventura!', 5, '../src/assets/viviane.png')
 INSERT INTO tb_testimonials (name, text, rating, img) VALUES ('Ana Muller', 'Tive o prazer de acampar com a Natane no litoral de São Paulo, ela é muito organizada e cuidadosa com todos os detalhes. Foi uma experiência incrível!', 5, '../src/assets/ana.png')
@@ -98,9 +99,9 @@ INSERT INTO tb_user_connections (user_id, connections_id) VALUES (14, 5);
 INSERT INTO tb_user_connections (user_id, connections_id) VALUES (14, 9);
 
 
-INSERT INTO tb_user_testimonials (user_id, testimonials_id) VALUES (1, 2);
-INSERT INTO tb_user_testimonials (user_id, testimonials_id) VALUES (1, 3);
-INSERT INTO tb_user_testimonials (user_id, testimonials_id) VALUES (2, 3);
-INSERT INTO tb_user_testimonials (user_id, testimonials_id) VALUES (2, 5);
-INSERT INTO tb_user_testimonials (user_id, testimonials_id) VALUES (4, 4);
-INSERT INTO tb_user_testimonials (user_id, testimonials_id) VALUES (4, 5);
+INSERT INTO tb_testimonials_user (testimonials_id, user_id) VALUES (2, 1);
+INSERT INTO tb_testimonials_user (testimonials_id, user_id) VALUES (3 ,1);
+INSERT INTO tb_testimonials_user (testimonials_id, user_id) VALUES (3, 2);
+INSERT INTO tb_testimonials_user (testimonials_id, user_id) VALUES (5, 2);
+INSERT INTO tb_testimonials_user (testimonials_id, user_id) VALUES (4, 4);
+INSERT INTO tb_testimonials_user (testimonials_id, user_id) VALUES (5, 4);

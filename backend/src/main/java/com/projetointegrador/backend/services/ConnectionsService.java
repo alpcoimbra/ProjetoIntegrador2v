@@ -24,7 +24,7 @@ public class ConnectionsService {
 	private ConnectionsRepository repository;
 	
 	@Transactional(readOnly = true)
-	public Page<Object> findAllPaged(PageRequest buscaPaginada){
+	public Page<ConnectionsDTO> findAllPaged(PageRequest buscaPaginada){
 		Page<Connections> list = repository.findAll(buscaPaginada);
 		return list.map(x -> new ConnectionsDTO(x));
 	}
@@ -39,6 +39,7 @@ public class ConnectionsService {
 	@Transactional
 	public ConnectionsDTO insert(ConnectionsDTO dto) {
 		Connections entity = new Connections();
+		entity.setId(dto.getId());
 		entity.setEmail(dto.getEmail());
 		entity = repository.save(entity);
 		return new ConnectionsDTO(entity);

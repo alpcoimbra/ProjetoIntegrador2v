@@ -4,6 +4,8 @@ import java.util.Optional;
 
 
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
@@ -25,7 +27,7 @@ public class UserService {
 	private UserRepository repository;
 	
 	@Transactional(readOnly = true)
-	public Page<Object> findAllPaged(PageRequest buscaPaginada){
+	public Page<UserDTO> findAllPaged(PageRequest buscaPaginada){
 		Page<User> list = repository.findAll(buscaPaginada);
 		return list.map(x -> new UserDTO(x));
 	}
@@ -34,14 +36,7 @@ public class UserService {
 	public UserDTO findById(Long id) {
 		Optional<User> obj = repository.findById(id);
 		User entity = obj.orElseThrow(() -> new ResourceNotFoundException("usuario nao localizado"));
-		return new UserDTO(entity, entity.getConnections()) ;
-	}
-	
-	@Transactional(readOnly = true)
-	public UserDTO findByName(Long id) {
-		Optional<User> obj = repository.findById(id);
-		User entity = obj.orElseThrow(() -> new ResourceNotFoundException("usuario nao localizado"));
-		return new UserDTO(entity.getTestimonials(), entity) ;
+		return new UserDTO(entity, entity.getConnections(), entity.getTestimonials()) ;
 	}
 	
 	@Transactional
@@ -59,7 +54,7 @@ public class UserService {
 		entity.setAbout(dto.getAbout());
 		entity.setRating(dto.getRating());
 		entity = repository.save(entity);
-		return new UserDTO(entity);
+		return new UserDTO(entity, entity.getConnections(), entity.getTestimonials());
 	}
 	
 	@Transactional

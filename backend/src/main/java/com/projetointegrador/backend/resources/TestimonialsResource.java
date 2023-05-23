@@ -2,6 +2,9 @@ package com.projetointegrador.backend.resources;
 
 import java.net.URI;
 
+
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -29,20 +32,19 @@ public class TestimonialsResource {
 	private TestimonialsService service;
 	
 	@GetMapping
-	public ResponseEntity<Page<Object>> findAll(@RequestParam(value = "page", defaultValue = "0") Integer page,
+	public ResponseEntity<Page<TestimonialsDTO>> findAll(@RequestParam(value = "page", defaultValue = "0") Integer page,
 			@RequestParam(value = "linesPerPage", defaultValue = "12") Integer linesPerPage,
 			@RequestParam(value = "direction", defaultValue = "ASC") String direction,
-			@RequestParam(value = "orderBy", defaultValue = "name") String orderBy){
+			@RequestParam(value = "orderBy", defaultValue = "id") String orderBy){
 		
 		PageRequest buscaPaginada = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		
-		Page<Object> list = service.findAllPaged(buscaPaginada);
+		Page<TestimonialsDTO> list = service.findAllPaged(buscaPaginada);
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<TestimonialsDTO> findById(@PathVariable Long id){
-		
 		TestimonialsDTO dto = service.findById(id);
 		return ResponseEntity.ok().body(dto);
 	}

@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 
 
+
 import com.projetointegrador.backend.entities.Connections;
 
 public class ConnectionsDTO implements Serializable {
