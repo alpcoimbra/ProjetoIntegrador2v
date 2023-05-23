@@ -177,16 +177,27 @@ public class UserDTO implements Serializable {
 	}
 
 
-
 	public List<ConnectionsDTO> getConnections() {
 		return connections;
 	}
 
 
-
 	public void setConnections(List<ConnectionsDTO> connections) {
 		this.connections = connections;
 	}
+
+
+
+	public List<TestimonialsDTO> getTestimonials() {
+		return testimonials;
+	}
+
+
+
+	public void setTestimonials(List<TestimonialsDTO> testimonials) {
+		this.testimonials = testimonials;
+	}
+	
 	
 
 }

@@ -54,7 +54,7 @@ public class UserService {
 		entity.setAbout(dto.getAbout());
 		entity.setRating(dto.getRating());
 		entity = repository.save(entity);
-		return new UserDTO(entity, entity.getConnections(), entity.getTestimonials());
+		return new UserDTO(entity);
 	}
 	
 	@Transactional

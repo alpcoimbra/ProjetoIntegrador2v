@@ -39,7 +39,6 @@ public class ConnectionsService {
 	@Transactional
 	public ConnectionsDTO insert(ConnectionsDTO dto) {
 		Connections entity = new Connections();
-		entity.setId(dto.getId());
 		entity.setEmail(dto.getEmail());
 		entity = repository.save(entity);
 		return new ConnectionsDTO(entity);

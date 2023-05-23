@@ -40,7 +40,6 @@ public class TestimonialsService {
 	@Transactional
 	public TestimonialsDTO insert(TestimonialsDTO dto) {
 		Testimonials entity = new Testimonials();
-		entity.setid(dto.getId());
 		entity.setName(dto.getName());
 		entity.setText(dto.getText());
 		entity.setRating(dto.getRating());
